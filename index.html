@@ -1,22 +1,23 @@
 ---
 layout: workshop      # DON'T CHANGE THIS.
 root: .               # DON'T CHANGE THIS EITHER.  (THANK YOU.)
-carpentry: "FIXME"    # what kind of Carpentry (must be either "dc" or "swc")
-venue: "FIXME"        # brief name of host site without address (e.g., "Euphoric State University")
-address: "FIXME"      # full street address of workshop (e.g., "Room A, 123 Forth Street, Blimingen, Euphoria")
-country: "FIXME"      # lowercase two-letter ISO country code such as "fr" (see https://en.wikipedia.org/wiki/ISO_3166-1)
-language: "FIXME"     # lowercase two-letter ISO language code such as "fr" (see https://en.wikipedia.org/wiki/ISO_639-1)
-latlng: "FIXME"       # decimal latitude and longitude of workshop venue (e.g., "41.7901128,-87.6007318" - use http://www.latlong.net/)
-humandate: "FIXME"    # human-readable dates for the workshop (e.g., "Feb 17-18, 2020")
-humantime: "FIXME"    # human-readable times for the workshop (e.g., "9:00 am - 4:30 pm")
-startdate: FIXME      # machine-readable start date for the workshop in YYYY-MM-DD format like 2015-01-01
-enddate: FIXME        # machine-readable end date for the workshop in YYYY-MM-DD format like 2015-01-02
-instructor: ["FIXME"] # boxed, comma-separated list of instructors' names as strings, like ["Kay McNulty", "Betty Jennings", "Betty Snyder"]
-helper: ["FIXME"]     # boxed, comma-separated list of helpers' names, like ["Marlyn Wescoff", "Fran Bilas", "Ruth Lichterman"]
-contact: ["fixme@example.org"]    # boxed, comma-separated list of contact email addresses for the host, lead instructor, or whoever else is handling questions, like ["marlyn.wescoff@example.org", "fran.bilas@example.org", "ruth.lichterman@example.org"]
-etherpad:             # optional: URL for the workshop Etherpad if there is one
+carpentry: "swc"    # what kind of Carpentry (must be either "dc" or "swc")
+venue: "Media and Arts Technology CDT, Queen Mary University of London"        # brief name of host site without address (e.g., "Euphoric State University")
+address: "Room Eng. 102, School of Electronic Engineering and Computer Science, Queen Mary University of London, London E1 4NS"      # full street address of workshop (e.g., "Room A, 123 Forth Street, Blimingen, Euphoria")
+country: "gb"      # lowercase two-letter ISO country code such as "fr" (see https://en.wikipedia.org/wiki/ISO_3166-1)
+language: "en"     # lowercase two-letter ISO language code such as "fr" (see https://en.wikipedia.org/wiki/ISO_639-1)
+latlng: "51.523586, -0.040498"       # decimal latitude and longitude of workshop venue (e.g., "41.7901128,-87.6007318" - use http://www.latlong.net/)
+humandate: "20-21 April 2017"    # human-readable dates for the workshop (e.g., "Feb 17-18, 2020")
+humantime: "9:00 am - 5:00 pm"    # human-readable times for the workshop (e.g., "9:00 am - 4:30 pm")
+startdate: 2017-04-20      # machine-readable start date for the workshop in YYYY-MM-DD format like 2015-01-01
+enddate: 2017-04-21        # machine-readable end date for the workshop in YYYY-MM-DD format like 2015-01-02
+instructor: [""] # boxed, comma-separated list of instructors' names as strings, like ["Kay McNulty", "Betty Jennings", "Betty Snyder"]
+helper: [""]     # boxed, comma-separated list of helpers' names, like ["Marlyn Wescoff", "Fran Bilas", "Ruth Lichterman"]
+contact: ["rebecca.stewart@qmul.ac.uk", "a.nenadic@manchester.ac.uk"]    # boxed, comma-separated list of contact email addresses for the host, lead instructor, or whoever else is handling questions, like ["marlyn.wescoff@example.org", "fran.bilas@example.org", "ruth.lichterman@example.org"]
+etherpad: #"http://pad.software-carpentry.org/2017-04-20-qmul"            # optional: URL for the workshop Etherpad if there is one
 eventbrite:           # optional: alphanumeric key for Eventbrite registration, e.g., "1234567890AB" (if Eventbrite is being used)
 ---
+
 
 <!-- See instructions in the comments below for how to edit specific sections of this workshop template. -->
 
@@ -47,10 +48,10 @@ eventbrite:           # optional: alphanumeric key for Eventbrite registration, 
 </iframe>
 {% endif %}
 
-<h4>This is the workshop template.  Use it to create your own website.
-Delete these lines and please fill in 
-<a href="{{site.amy_site}}/submit">this self-organized workshop form</a>
-and the administrator will contact you if we need any extra information.</h4>
+<!--<h4>This is the workshop template.  Use it to create your own website.-->
+<!--Delete these lines and please fill in -->
+<!--<a href="{{site.amy_site}}/submit">this self-organized workshop form</a>-->
+<!--and the administrator will contact you if we need any extra information.</h4>-->
 
 <h2 id="general">General Information</h2>
 
@@ -74,10 +75,12 @@ and the administrator will contact you if we need any extra information.</h4>
 <p align="center">
   <em>
     For more information on what we teach and why,
-    please see our paper
+    please see the paper
     "<a href="http://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.1001745">Best Practices for Scientific Computing</a>".
   </em>
 </p>
+
+<h2 id="workshop_details">Workshop Details</h2>
 
 <!--
   AUDIENCE
@@ -91,6 +94,18 @@ and the administrator will contact you if we need any extra information.</h4>
   <strong>You don't need to have any previous knowledge of the tools that will
     be presented at the workshop.</strong>
 </p>
+
+<!--
+  DATE
+
+  This block displays the date and time of the workshop.
+-->
+{% if page.humandate and page.humantime %}
+<p id="when">
+  <strong>When:</strong>
+  {{page.humandate}}, {{page.humantime}}.
+</p>
+{% endif %}
 
 <!--
   LOCATION
@@ -112,31 +127,18 @@ and the administrator will contact you if we need any extra information.</h4>
 {% endif %}
 
 <!--
-  DATE
-
-  This block displays the date and links to Google Calendar.
--->
-{% if page.humandate %}
-<p id="when">
-  <strong>When:</strong>
-  {{page.humandate}}.
-  <a href="//calendar.google.com/calendar/render?action=TEMPLATE&text={% if page.carpentry == "swc" %}Software{% elsif page.carpentry == "dc" %}Data{% endif %} Carpentry Workshop&dates={{ page.startdate | replace: "-", "" }}/{{ page.enddate | replace: "-", "" }}&trp=false&sprop&sprop=name:&sf=true&output=xml&location={{ page.address }}&details={% if page.carpentry == "swc" %}Software{% elsif page.carpentry == "dc" %}Data{% endif %} Carpentry Workshop at {{ page.venue }}">Add to your Google Calendar.</a>
-</p>
-{% endif %}
-
-<!--
   SPECIAL REQUIREMENTS
 
   Modify the block below if there are any special requirements.
 -->
-<p id="requirements">
-  <strong>Requirements:</strong> Participants must bring a laptop with a
-  Mac, Linux, or Windows operating system (not a tablet, Chromebook, etc.) that they have administrative privileges
-  on. They should have a few specific software packages installed (listed
-  <a href="#setup">below</a>). They are also required to abide by
-  Software Carpentry's
-  <a href="{{site.swc_site}}/conduct.html">Code of Conduct</a>.
-</p>
+<!--<p id="requirements">-->
+  <!--<strong>Requirements:</strong> Participants must bring a laptop with a-->
+  <!--Mac, Linux, or Windows operating system (not a tablet, Chromebook, etc.) that they have administrative privileges-->
+  <!--on. They should have a few specific software packages installed (listed-->
+  <!--<a href="#setup">below</a>). They are also required to abide by-->
+  <!--Software Carpentry's-->
+  <!--<a href="{{site.swc_site}}/conduct.html">Code of Conduct</a>.-->
+<!--</p>-->
 
 <!--
   ACCESSIBILITY
@@ -144,23 +146,50 @@ and the administrator will contact you if we need any extra information.</h4>
   Modify the block below if there are any barriers to accessibility or
   special instructions.
 -->
-<p id="accessibility">
-  <strong>Accessibility:</strong> We are committed to making this workshop
-  accessible to everybody.
-  The workshop organisers have checked that:
+<!--<p id="accessibility">-->
+  <!--<strong>Accessibility:</strong> We are committed to making this workshop-->
+  <!--accessible to everybody.-->
+  <!--The workshop organisers have checked that:-->
+<!--</p>-->
+<!--<ul>-->
+  <!--<li>The room is wheelchair / scooter accessible.</li>-->
+  <!--<li>Accessible restrooms are available.</li>-->
+<!--</ul>-->
+<!--<p>-->
+  <!--Materials will be provided in advance of the workshop and-->
+  <!--large-print handouts are available if needed by notifying the-->
+  <!--organizers in advance.  If we can help making learning easier for-->
+  <!--you (e.g. sign-language interpreters, lactation facilities) please-->
+  <!--<a href="mailto:{{page.contact}}">get in touch</a> and we will-->
+  <!--attempt to provide them.-->
+<!--</p>-->
+
+
+<!--
+  ETHERPAD
+
+  At `_misc/etherpad.txt` you will find a template for the etherpad.
+
+  Display the Etherpad for the workshop.  You can set this up in
+  advance or on the first day; either way, make sure you push changes
+  to GitHub after you have its URL.  To create an Etherpad, go to
+
+      http://pad.software-carpentry.org/YYYY-MM-DD-site
+
+  where 'YYYY-MM-DD-site' is the identifier for your workshop,
+  e.g., '2015-06-10-esu'.
+-->
+{% if page.etherpad %}
+<p id="etherpad">
+  <strong>Etherpad:</strong> <a target="_blank" href="{{page.etherpad}}">{{page.etherpad}}</a>.
+  <br/>
+  We will use this Etherpad for chatting, taking notes, and sharing URLs and bits of code during the workshop.
 </p>
-<ul>
-  <li>The room is wheelchair / scooter accessible.</li>
-  <li>Accessible restrooms are available.</li>
-</ul>
-<p>
-  Materials will be provided in advance of the workshop and
-  large-print handouts are available if needed by notifying the
-  organizers in advance.  If we can help making learning easier for
-  you (e.g. sign-language interpreters, lactation facilities) please
-  <a href="mailto:{{page.contact}}">get in touch</a> and we will
-  attempt to provide them.
-</p>
+{% endif %}
+
+<div class="alert alert-warning">Participants will need to bring their own laptops configured before the workshop according to the <a href="#setup">setup instructions.</a></div>
+
+<hr/>
 
 <!--
   CONTACT EMAIL ADDRESS
@@ -208,50 +237,106 @@ and the administrator will contact you if we need any extra information.</h4>
   <div class="col-md-6">
     <h3>Day 1</h3>
     <table class="table table-striped">
-      <tr> <td>09:00</td>  <td>Automating tasks with the Unix shell</td> </tr>
-      <tr> <td>10:30</td> <td>Coffee</td> </tr>
-      <tr> <td>12:00</td>  <td>Lunch break</td> </tr>
-      <tr> <td>13:00</td>  <td>Building programs with Python</td> </tr>
-      <tr> <td>14:30</td>  <td>Coffee</td> </tr>
-      <tr> <td>16:00</td>  <td>Wrap-up</td> </tr>
+      <tr> <td><strong>Time</strong></td> <td><strong>Content</strong></td> <td><strong>References</strong></td></tr>
+      <tr> <td>09:00</td>  <td>Welcome and introduction</td>
+        <td>
+          <ul>
+            <li>Check people have <a href="#setup">software installed</a></li>
+            <li>Explain content of the course</li>
+            <li>Explain <a href="{{site.swc_site}}/conduct.html">Code of Conduct</a></li>
+            <li>Explain use of stickies and feedback</li>
+            <li><a target="_blank" href="http://pad.software-carpentry.org/2017-03-02-manchester">Etherpad</a></li>
+          </ul>
+        </td>
+      </tr>
+      <tr> <td>09:45</td>  <td>Automating tasks with the Unix Shell (1)</td>
+        <td>
+          <ul>
+            <li><a target="_blank" href="{{site.swc_pages}}/shell-novice/01-intro">Introducing the Shell</a></li>
+            <li><a target="_blank" href="{{site.swc_pages}}/shell-novice/02-filedir">Navigating files and directories</a></li>
+            <li><a target="_blank" href="{{site.swc_pages}}/shell-novice/03-create">Working with files and directories</a></li>
+            <li><a target="_blank" href="{{site.swc_pages}}/shell-novice/04-pipefilter">Pipes and filters for combining existing shell programs</a></li>
+          </ul>
+        </td>
+      </tr>
+      <tr> <td>11:00</td> <td>Coffee</td> <td></td></tr>
+      <tr> <td>11:15</td>  <td>Automating tasks with the Unix Shell (2)</td>
+        <td>
+          <ul>
+            <li><a target="_blank" href="{{site.swc_pages}}/shell-novice/05-loop">Looping over to repeat commands</a></li>
+            <li><a target="_blank" href="{{site.swc_pages}}/shell-novice/06-script">Shell scripts for reusable code</a></li>
+            <li><a target="_blank" href="{{site.swc_pages}}/shell-novice/07-find">Finding files and things in files</a></li>
+          </ul>
+        </td>
+      </tr>
+      <tr> <td>12:30</td>  <td>Lunch break</td> <td></td></tr>
+      <tr> <td>13:15</td>  <td>Data organization and cleaning (best practices)</td>
+        <td>
+            <li><a target="_blank" href="http://www.datacarpentry.org/spreadsheet-ecology-lesson">Data organisation with spreadsheets</a></li>
+            <li><a target="_blank" href="http://www.datacarpentry.org/OpenRefine-ecology-lesson">Data Cleaning with OpenRefine</a></li>
+        </td>
+      </tr>
+      <tr> <td>15:00</td>  <td>Coffee</td> <td></td></tr>
+      <tr> <td>15:15</td>  <td>Version control with Git (1)</td>
+        <td>
+            <li><a target="_blank" href="{{site.swc_pages}}/git-novice/01-basics">Why version control</a></li>
+            <li><a target="_blank" href="{{site.swc_pages}}/git-novice/02-setup">Setting up Git</a></li>
+            <li><a target="_blank" href="{{site.swc_pages}}/git-novice/03-create">Creating a repository</a></li>
+            <li><a target="_blank" href="{{site.swc_pages}}/git-novice/04-changes">Tracking changes</a></li>
+            <li><a target="_blank" href="{{site.swc_pages}}/git-novice/05-history">Exploring history</a></li>
+            <li><a target="_blank" href="{{site.swc_pages}}/git-novice/06-ignore">Ignoring things</a></li>
+        </td>
+      </tr>
+      <tr> <td>17:00</td>  <td>Wrap-up</td> <td></td></tr>
     </table>
   </div>
   <div class="col-md-6">
     <h3>Day 2</h3>
     <table class="table table-striped">
-      <tr> <td>09:00</td>  <td>Version control with Git</td> </tr>
-      <tr> <td>10:30</td>  <td>Coffee</td> </tr>
-      <tr> <td>12:00</td>  <td>Lunch break</td> </tr>
-      <tr> <td>13:00</td>  <td>Managing data with SQL</td> </tr>
-      <tr> <td>14:30</td>  <td>Coffee</td> </tr>
-      <tr> <td>16:00</td>  <td>Wrap-up</td> </tr>
+      <tr> <td><strong>Time</strong></td> <td><strong>Content</strong></td> <td><strong>References</strong></td></tr>
+      <tr> <td>09:00</td>  <td>Recap of Day 1</td> <td></td></tr>
+      <tr> <td>09:15</td>  <td>Version control with Git (2)</td>
+        <td>
+            <li><a target="_blank" href="{{site.swc_pages}}/git-novice/07-github">Intro and remote repositories in GitHub</a></li>
+            <li><a target="_blank" href="{{site.swc_pages}}/git-novice/08-collab">Collaborating using Github</a></li>
+            <li><a target="_blank" href="{{site.swc_pages}}/git-novice/09-conflict">Managing conflicts</a></li>
+        </td>
+      </tr>
+      <tr> <td>10:30</td> <td>Coffee</td> <td></td></tr>
+      <tr> <td>11:00</td>  <td>Programming in Python (1)</td>
+        <td>
+          <ul>
+            <li><a target="_blank" href="{{site.swc_pages}}/python-novice-inflammation/01-numpy">Analysing data</a></li>
+            <li><a target="_blank" href="{{site.swc_pages}}/python-novice-inflammation/02-loop">Repeating actions with loops</a></li>
+            <li><a target="_blank" href="{{site.swc_pages}}/python-novice-inflammation/03-lists">Storing multiple values in lists</a></li>
+            <li><a target="_blank" href="{{site.swc_pages}}/python-novice-inflammation/04-files">Analyzing data from multiple files</a></li>
+            <li><a target="_blank" href="{{site.swc_pages}}/python-novice-inflammation/05-cond">Making choices</a></li>
+          </ul>
+        </td>
+      </tr>
+      <tr> <td>12:30</td>  <td>Lunch break</td> <td></td></tr>
+      <tr> <td>13:15</td>  <td>Programming in Python (2)</td>
+        <td>
+          <li><a target="_blank" href="{{site.swc_pages}}/python-novice-inflammation/06-func">Creating functions</a></li>
+          <li><a target="_blank" href="{{site.swc_pages}}/python-novice-inflammation/07-errors">Errors and exceptions</a></li>
+          <li><a target="_blank" href="{{site.swc_pages}}/python-novice-inflammation/08-defensive">Defensive programming</a></li>
+        </td>
+      </tr>
+      <tr> <td>14:45</td>  <td>Coffee</td> <td></td></tr>
+      <tr> <td>15:30</td>  <td>Programming in Python (3)</td>
+        <td>
+          <li><a target="_blank" href="{{site.swc_pages}}/python-novice-inflammation/09-debugging">Debugging</a></li>
+          <li><a target="_blank" href="{{site.swc_pages}}/python-novice-inflammation/10-cmdline">Python programs as command-line tools</a></li>
+        </td>
+      </tr>
+      <tr> <td>16:30</td>  <td>Feedback and wrap-up</td>
+        <td>
+          <li><a target="_blank" href="{{ site.post_survey }}{{ site.github.project_title }}">Post-workshop survey</a></li>
+        </td>
+      </tr>
     </table>
   </div>
 </div>
-
-<!--
-  ETHERPAD
-
-  At `_misc/etherpad.txt` you will find a template for the etherpad.
-
-  Display the Etherpad for the workshop.  You can set this up in
-  advance or on the first day; either way, make sure you push changes
-  to GitHub after you have its URL.  To create an Etherpad, go to
-
-      http://pad.software-carpentry.org/YYYY-MM-DD-site
-
-  where 'YYYY-MM-DD-site' is the identifier for your workshop,
-  e.g., '2015-06-10-esu'.
--->
-{% if page.etherpad %}
-<p id="etherpad">
-  <strong>Etherpad:</strong> <a href="{{page.etherpad}}">{{page.etherpad}}</a>.
-  <br/>
-  We will use this Etherpad for chatting, taking notes, and sharing URLs and bits of code.
-</p>
-{% endif %}
-
-<hr/>
 
 <!--
   SYLLABUS
@@ -271,91 +356,98 @@ and the administrator will contact you if we need any extra information.</h4>
   'tools/check' as well.
 -->
 <h2 id="syllabus">Syllabus</h2>
+<p>Below are links to all the lessons taught at the course.</p>
+<ul>
+  <li><a target="_blank" href="{{site.swc_pages}}/shell-novice">The Unix Shell</a></li>
+  <li><a target="_blank" href="{{site.swc_pages}}/git-novice">Version Control with Git</a></li>
+  <li><a target="_blank" href="{{site.swc_pages}}/python-novice-inflammation">Programming in Python</a></li>
+  <li><a target="_blank" href="http://www.datacarpentry.org/spreadsheet-ecology-lesson">Data Organisation in Spreadsheets</a></li>
+  <li><a target="_blank" href="http://www.datacarpentry.org/OpenRefine-ecology-lesson">Data Cleaning with OpenRefine</a></li>
+</ul>
+<!--<div class="row">-->
+  <!--<div class="col-md-6">-->
+    <!--<h3 id="syllabus-shell">The Unix Shell</h3>-->
+    <!--<ul>-->
+      <!--<li>Files and directories</li>-->
+      <!--<li>History and tab completion</li>-->
+      <!--<li>Pipes and redirection</li>-->
+      <!--<li>Looping over files</li>-->
+      <!--<li>Creating and running shell scripts</li>-->
+      <!--<li>Finding things</li>-->
+      <!--<li><a href="{{site.swc_pages}}/shell-novice/reference/">Reference...</a></li>-->
+    <!--</ul>-->
+  <!--</div>-->
+  <!--<div class="col-md-6">-->
+    <!--<h3 id="syllabus-python">Programming in Python</h3>-->
+    <!--<ul>-->
+      <!--<li>Using libraries</li>-->
+      <!--<li>Working with arrays</li>-->
+      <!--<li>Reading and plotting data</li>-->
+      <!--<li>Creating and using functions</li>-->
+      <!--<li>Loops and conditionals</li>-->
+      <!--<li>Defensive programming</li>-->
+      <!--<li>Using Python from the command line</li>-->
+      <!--<li><a href="{{site.swc_pages}}/python-novice-inflammation/reference/">Reference...</a></li>-->
+    <!--</ul>-->
+  <!--</div>-->
+  <!--&lt;!&ndash;-->
+  <!--<div class="col-md-6">-->
+    <!--<h3 id="syllabus-r">Programming in R</h3>-->
+    <!--<ul>-->
+      <!--<li>Working with vectors and data frames</li>-->
+      <!--<li>Reading and plotting data</li>-->
+      <!--<li>Creating and using functions</li>-->
+      <!--<li>Loops and conditionals</li>-->
+      <!--<li>Using R from the command line</li>-->
+      <!--<li><a href="{{site.swc_pages}}/r-novice-inflammation/reference/">Reference...</a></li>-->
+    <!--</ul>-->
+  <!--</div>-->
+  <!--&ndash;&gt;-->
+  <!--&lt;!&ndash;-->
+  <!--<div class="col-md-6">-->
+    <!--<h3 id="syllabus-matlab">Programming in MATLAB</h3>-->
+    <!--<ul>-->
+      <!--<li>Working with arrays</li>-->
+      <!--<li>Reading and plotting data</li>-->
+      <!--<li>Creating and using functions</li>-->
+      <!--<li>Loops and conditionals</li>-->
+      <!--<li>Defensive programming</li>-->
+      <!--<li><a href="{{site.swc_pages}}/matlab-novice-inflammation/reference/">Reference...</a></li>-->
+     <!--</ul>-->
+   <!--</div>-->
+   <!--&ndash;&gt;-->
+<!--</div>-->
 
-<div class="row">
-  <div class="col-md-6">
-    <h3 id="syllabus-shell">The Unix Shell</h3>
-    <ul>
-      <li>Files and directories</li>
-      <li>History and tab completion</li>
-      <li>Pipes and redirection</li>
-      <li>Looping over files</li>
-      <li>Creating and running shell scripts</li>
-      <li>Finding things</li>
-      <li><a href="{{site.swc_pages}}/shell-novice/reference/">Reference...</a></li>
-    </ul>
-  </div>
-  <div class="col-md-6">
-    <h3 id="syllabus-python">Programming in Python</h3>
-    <ul>
-      <li>Using libraries</li>
-      <li>Working with arrays</li>
-      <li>Reading and plotting data</li>
-      <li>Creating and using functions</li>
-      <li>Loops and conditionals</li>
-      <li>Defensive programming</li>
-      <li>Using Python from the command line</li>
-      <li><a href="{{site.swc_pages}}/python-novice-inflammation/reference/">Reference...</a></li>
-    </ul>
-  </div>
-  <!--
-  <div class="col-md-6">
-    <h3 id="syllabus-r">Programming in R</h3>
-    <ul>
-      <li>Working with vectors and data frames</li>
-      <li>Reading and plotting data</li>
-      <li>Creating and using functions</li>
-      <li>Loops and conditionals</li>
-      <li>Using R from the command line</li>
-      <li><a href="{{site.swc_pages}}/r-novice-inflammation/reference/">Reference...</a></li>
-    </ul>
-  </div>
-  -->
-  <!--
-  <div class="col-md-6">
-    <h3 id="syllabus-matlab">Programming in MATLAB</h3>
-    <ul>
-      <li>Working with arrays</li>
-      <li>Reading and plotting data</li>
-      <li>Creating and using functions</li>
-      <li>Loops and conditionals</li>
-      <li>Defensive programming</li>
-      <li><a href="{{site.swc_pages}}/matlab-novice-inflammation/reference/">Reference...</a></li>
-     </ul>
-   </div>
-   -->
-</div>
-
-<div class="row">
-  <div class="col-md-6">
-    <h3 id="syllabus-git">Version Control with Git</h3>
-    <ul>
-      <li>Creating a repository</li>
-      <li>Recording changes to files: <code>add</code>, <code>commit</code>, ...</li>
-      <li>Viewing changes: <code>status</code>, <code>diff</code>, ...</li>
-      <li>Ignoring files</li>
-      <li>Working on the web: <code>clone</code>, <code>pull</code>, <code>push</code>, ...</li>
-      <li>Resolving conflicts</li>
-      <li>Open licenses</li>
-      <li>Where to host work, and why</li>
-      <li><a href="{{site.swc_pages}}/git-novice/reference/">Reference...</a></li>
-    </ul>
-  </div>
-  <div class="col-md-6">
-    <h3 id="syllabus-sql">Managing Data with SQL</h3>
-    <ul>
-      <li>Reading and sorting data</li>
-      <li>Filtering with <code>where</code></li>
-      <li>Calculating new values on the fly</li>
-      <li>Handling missing values</li>
-      <li>Combining values using aggregation</li>
-      <li>Combining information from multiple tables using <code>join</code></li>
-      <li>Creating, modifying, and deleting data</li>
-      <li>Programming with databases</li>
-      <li><a href="{{site.swc_pages}}/sql-novice-survey/reference/">Reference...</a></li>
-    </ul>
-  </div>
-</div>
+<!--<div class="row">-->
+  <!--<div class="col-md-6">-->
+    <!--<h3 id="syllabus-git">Version Control with Git</h3>-->
+    <!--<ul>-->
+      <!--<li>Creating a repository</li>-->
+      <!--<li>Recording changes to files: <code>add</code>, <code>commit</code>, ...</li>-->
+      <!--<li>Viewing changes: <code>status</code>, <code>diff</code>, ...</li>-->
+      <!--<li>Ignoring files</li>-->
+      <!--<li>Working on the web: <code>clone</code>, <code>pull</code>, <code>push</code>, ...</li>-->
+      <!--<li>Resolving conflicts</li>-->
+      <!--<li>Open licenses</li>-->
+      <!--<li>Where to host work, and why</li>-->
+      <!--<li><a href="{{site.swc_pages}}/git-novice/reference/">Reference...</a></li>-->
+    <!--</ul>-->
+  <!--</div>-->
+  <!--<div class="col-md-6">-->
+    <!--<h3 id="syllabus-sql">Managing Data with SQL</h3>-->
+    <!--<ul>-->
+      <!--<li>Reading and sorting data</li>-->
+      <!--<li>Filtering with <code>where</code></li>-->
+      <!--<li>Calculating new values on the fly</li>-->
+      <!--<li>Handling missing values</li>-->
+      <!--<li>Combining values using aggregation</li>-->
+      <!--<li>Combining information from multiple tables using <code>join</code></li>-->
+      <!--<li>Creating, modifying, and deleting data</li>-->
+      <!--<li>Programming with databases</li>-->
+      <!--<li><a href="{{site.swc_pages}}/sql-novice-survey/reference/">Reference...</a></li>-->
+    <!--</ul>-->
+  <!--</div>-->
+<!--</div>-->
 
 <hr/>
 
@@ -647,35 +739,72 @@ and the administrator will contact you if we need any extra information.</h4>
       <h4 id="python-linux">Linux</h4>
       <ol>
         <li>Open <a href="http://continuum.io/downloads">http://continuum.io/downloads</a> with your web browser.</li>
-        <li>Download the Python 3 installer for Linux.<br>
-          (Installation requires using the shell. If you aren't
-           comfortable doing the installation yourself
-           stop here and request help at the workshop.)
-        </li>
+        <li>Download the Python 3 installer for Linux.</li>
+        <li>Install Python 3 using all of the defaults for installation.
+        (Installation requires using the shell. If you aren't
+        comfortable doing the installation yourself
+        stop here and request help at the workshop.)</li>
         <li>
           Open a terminal window.
         </li>
         <li>
           Type <pre>bash Anaconda3-</pre> and then press
           tab. The name of the file you just downloaded should
-          appear. If it does not, navigate to the folder where you
-          downloaded the file, for example with:
-          <pre>cd Downloads</pre>
-          Then, try again.
+          appear.
         </li>
         <li>
-          Press enter. You will follow the text-only prompts. To move through
-          the text, press the space key. Type <code>yes</code> and
+          Press enter. You will follow the text-only prompts.  When
+          there is a colon at the bottom of the screen press the down
+          arrow to move down through the text. Type <code>yes</code> and
           press enter to approve the license. Press enter to approve the
           default location for the files. Type <code>yes</code> and
           press enter to prepend Anaconda to your <code>PATH</code>
           (this makes the Anaconda distribution the default Python).
         </li>
-        <li>
-          Close the terminal window.
       </ol>
     </div>
   </div>
+
+  <div id="openrefine">
+  <h3>OpenRefine</h3>
+  <p>
+    OpenRefine (previously Google Refine) is a tool for data cleaning that runs
+  through a web browser, and any browser - Safari, Firefox, Chrome, Explorer -
+  should work fine.  You will need to download Google Refine and install it, and
+  when you open it, it will run through the browser, but you don't need an
+  internet connection, and the data will all be stored on your computer.
+  </p>
+    <div class="row">
+    <div class="col-md-4">
+      <h4 id="r-windows">Windows</h4>
+      <p>
+      Go to the OpenRefine <a href="http://openrefine.org/download.html">download page</a>, and click on <i>Windows kit</i> to download the install file.
+      To use it, unzip, and double-click on openrefine.exe (if you're having issues with openrefine.exe try refine.bat instead). OpenRefine will then open in your web browser.
+        If it doesn't open automatically, open a web broswer after you've started the program and go to the URL <code>http://localhost:3333</code> and you should see OpenRefine.
+      </p>
+    </div>
+    <div class="col-md-4">
+      <h4 id="r-macosx">Mac OS X</h4>
+      <p>
+        Go to the OpenRefine <a href="http://openrefine.org/download.html">download page</a>, and click on <i>Mac kit</i> to download the install file.
+        Open the downloaded .dmg file and drag the icon in to the Applications folder. Double click on the icon and Google Refine will then open in your web browser.
+        If it doesn't open automatically, open a web broswer after you've started the program and go to the URL <code>http://localhost:3333</code> and you should see OpenRefine.
+      </p>
+    </div>
+    <div class="col-md-4">
+      <h4 id="r-linux">Linux</h4>
+      <p>
+        Go to the OpenRefine <a href="http://openrefine.org/download.html">download
+      page</a>. Click on <i>Linux kit</i> to download the install file. Extract the file and
+        type <code>./refine</code> in your terminal and Google Refine will then
+      open in your web browser. If it doesn't open automatically, open a web broswer after you've started
+      the program and go to the URL <code>http://localhost:3333</code> and you should
+      see OpenRefine.
+      </p>
+    </div>
+  </div>
+  </ul>
+</div>
 <!--
   <p>
   Once you are done installing the software listed above,
@@ -685,93 +814,93 @@ and the administrator will contact you if we need any extra information.</h4>
 -->
 </div> <!-- End of 'Python' section. -->
 
-<div id="r"> <!-- Start of 'R' section. -->
-  <h3>R</h3>
+<!--<div id="r"> &lt;!&ndash; Start of 'R' section. &ndash;&gt;-->
+  <!--<h3>R</h3>-->
 
-  <p>
-    <a href="http://www.r-project.org">R</a> is a programming language
-    that is especially powerful for data exploration, visualization, and
-    statistical analysis. To interact with R, we use
-    <a href="http://www.rstudio.com/">RStudio</a>.
-  </p>
+  <!--<p>-->
+    <!--<a href="http://www.r-project.org">R</a> is a programming language-->
+    <!--that is especially powerful for data exploration, visualization, and-->
+    <!--statistical analysis. To interact with R, we use-->
+    <!--<a href="http://www.rstudio.com/">RStudio</a>.-->
+  <!--</p>-->
 
-  <div class="row">
-    <div class="col-md-4">
-      <h4 id="r-windows">Windows</h4>
-      <a href="https://www.youtube.com/watch?v=q0PjTAylwoU">Video Tutorial</a>
-      <p>
-        Install R by downloading and running
-        <a href="http://cran.r-project.org/bin/windows/base/release.htm">this .exe file</a>
-        from <a href="http://cran.r-project.org/index.html">CRAN</a>.
-        Also, please install the
-        <a href="http://www.rstudio.com/ide/download/desktop">RStudio IDE</a>.
-        Note that if you have separate user and admin accounts, you should run the 
-        installers as administrator (right-click on .exe file and select "Run as 
-        administrator" instead of double-clicking). Otherwise problems may occur later, 
-        for example when installing R packages.
-      </p>
-    </div>
-    <div class="col-md-4">
-      <h4 id="r-macosx">Mac OS X</h4>
-      <a href="https://www.youtube.com/watch?v=5-ly3kyxwEg">Video Tutorial</a>
-      <p>
-        Install R by downloading and running
-        <a href="http://cran.r-project.org/bin/macosx/R-latest.pkg">this .pkg file</a>
-        from <a href="http://cran.r-project.org/index.html">CRAN</a>.
-        Also, please install the
-        <a href="http://www.rstudio.com/ide/download/desktop">RStudio IDE</a>.
-      </p>
-    </div>
-    <div class="col-md-4">
-      <h4 id="r-linux">Linux</h4>
-      <p>
-        You can download the binary files for your distribution
-        from <a href="http://cran.r-project.org/index.html">CRAN</a>. Or
-        you can use your package manager (e.g. for Debian/Ubuntu
-        run <code>sudo apt-get install r-base</code> and for Fedora run
-        <code>sudo yum install R</code>).  Also, please install the
-        <a href="http://www.rstudio.com/ide/download/desktop">RStudio IDE</a>.
-      </p>
-    </div>
-  </div>
-</div> <!-- End of 'R' section. -->
+  <!--<div class="row">-->
+    <!--<div class="col-md-4">-->
+      <!--<h4 id="r-windows">Windows</h4>-->
+      <!--<a href="https://www.youtube.com/watch?v=q0PjTAylwoU">Video Tutorial</a>-->
+      <!--<p>-->
+        <!--Install R by downloading and running-->
+        <!--<a href="http://cran.r-project.org/bin/windows/base/release.htm">this .exe file</a>-->
+        <!--from <a href="http://cran.r-project.org/index.html">CRAN</a>.-->
+        <!--Also, please install the-->
+        <!--<a href="http://www.rstudio.com/ide/download/desktop">RStudio IDE</a>.-->
+        <!--Note that if you have separate user and admin accounts, you should run the -->
+        <!--installers as administrator (right-click on .exe file and select "Run as -->
+        <!--administrator" instead of double-clicking). Otherwise problems may occur later, -->
+        <!--for example when installing R packages.-->
+      <!--</p>-->
+    <!--</div>-->
+    <!--<div class="col-md-4">-->
+      <!--<h4 id="r-macosx">Mac OS X</h4>-->
+      <!--<a href="https://www.youtube.com/watch?v=5-ly3kyxwEg">Video Tutorial</a>-->
+      <!--<p>-->
+        <!--Install R by downloading and running-->
+        <!--<a href="http://cran.r-project.org/bin/macosx/R-latest.pkg">this .pkg file</a>-->
+        <!--from <a href="http://cran.r-project.org/index.html">CRAN</a>.-->
+        <!--Also, please install the-->
+        <!--<a href="http://www.rstudio.com/ide/download/desktop">RStudio IDE</a>.-->
+      <!--</p>-->
+    <!--</div>-->
+    <!--<div class="col-md-4">-->
+      <!--<h4 id="r-linux">Linux</h4>-->
+      <!--<p>-->
+        <!--You can download the binary files for your distribution-->
+        <!--from <a href="http://cran.r-project.org/index.html">CRAN</a>. Or-->
+        <!--you can use your package manager (e.g. for Debian/Ubuntu-->
+        <!--run <code>sudo apt-get install r-base</code> and for Fedora run-->
+        <!--<code>sudo yum install R</code>).  Also, please install the-->
+        <!--<a href="http://www.rstudio.com/ide/download/desktop">RStudio IDE</a>.-->
+      <!--</p>-->
+    <!--</div>-->
+  <!--</div>-->
+<!--</div> &lt;!&ndash; End of 'R' section. &ndash;&gt;-->
 
-<div id="sql"> <!-- Start of 'SQLite' section. -->
-  <h3>SQLite</h3>
+<!--<div id="sql"> &lt;!&ndash; Start of 'SQLite' section. &ndash;&gt;-->
+  <!--<h3>SQLite</h3>-->
 
-  <p>
-    SQL is a specialized programming language used with databases.  We
-    use a simple database manager called
-    <a href="http://www.sqlite.org/">SQLite</a> in our lessons.
-  </p>
+  <!--<p>-->
+    <!--SQL is a specialized programming language used with databases.  We-->
+    <!--use a simple database manager called-->
+    <!--<a href="http://www.sqlite.org/">SQLite</a> in our lessons.-->
+  <!--</p>-->
 
-  <div class="row">
-    <div class="col-md-4">
-      <h4 id="sql-windows">Windows</h4>
-      <p>
-        The <a href="{{site.swc_installer}}">Software Carpentry Windows Installer</a>
-        installs SQLite for Windows.
-        If you used the installer to configure nano, you don't need to run it again.
-      </p>
-    </div>
-    <div class="col-md-4">
-      <h4 id="sql-macosx">Mac OS X</h4>
-      <p>
-        SQLite comes pre-installed on Mac OS X.
-      </p>
-    </div>
-    <div class="col-md-4">
-      <h4 id="sql-linux">Linux</h4>
-      <p>
-        SQLite comes pre-installed on Linux.
-      </p>
-    </div>
-  </div>
+  <!--<div class="row">-->
+    <!--<div class="col-md-4">-->
+      <!--<h4 id="sql-windows">Windows</h4>-->
+      <!--<p>-->
+        <!--The <a href="{{site.swc_installer}}">Software Carpentry Windows Installer</a>-->
+        <!--installs SQLite for Windows.-->
+        <!--If you used the installer to configure nano, you don't need to run it again.-->
+      <!--</p>-->
+    <!--</div>-->
+    <!--<div class="col-md-4">-->
+      <!--<h4 id="sql-macosx">Mac OS X</h4>-->
+      <!--<p>-->
+        <!--SQLite comes pre-installed on Mac OS X.-->
+      <!--</p>-->
+    <!--</div>-->
+    <!--<div class="col-md-4">-->
+      <!--<h4 id="sql-linux">Linux</h4>-->
+      <!--<p>-->
+        <!--SQLite comes pre-installed on Linux.-->
+      <!--</p>-->
+    <!--</div>-->
+  <!--</div>-->
 
-  <p><strong>If you installed Anaconda, it also has a copy of SQLite
-    <a href="https://github.com/ContinuumIO/anaconda-issues/issues/307">without support to <code>readline</code></a>.
-    Instructors will provide a workaround for it if needed.</strong></p>
-</div> <!-- End of 'SQLite' section. -->
+  <!--<p><strong>If you installed Anaconda, it also has a copy of SQLite-->
+    <!--<a href="https://github.com/ContinuumIO/anaconda-issues/issues/307">without support to <code>readline</code></a>.-->
+    <!--Instructors will provide a workaround for it if needed.</strong></p>-->
+<!--</div> &lt;!&ndash; End of 'SQLite' section. &ndash;&gt;-->
 
 <!--
   Uncomment this section if you are using our virtual machine.
